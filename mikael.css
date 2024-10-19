@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    background-color: turquoise;
+}
+
+p {
+    margin: 15px 10px;
+}
+
+h2 {
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: rgb(2, 99, 99);
+    display: inline;
+}
+
+.contentbox {
+    background-color: white;
+    width: 720px;
+    border: white 2px solid;
+    border-radius: 15px;
+    margin: 2em auto 2em auto;
+    padding: 4em;
+}
+
+input[type=radio] {
+    margin-right: 3px;
+    margin-left: 15px;
+}
+
+input[type=checkbox] {
+    margin-right: 3px;
+    margin-left: 15px;
+}
+input[type=button] {
+    border: 1px grey solid;
+    background-color: orange;
+    font-size: 1.5em;
+    font-weight: 650;
+    color: white;
+    padding: 5px;
+    border-radius: 8px 8px;
+}
+
+.quizbox {
+    background-color: white;
+    width: 600px;
+    margin: 2em auto;
+    padding: 2em 2em;
+    border: black 2px solid;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px black;
+}
+
+.errormessage {
+    color: red;
+}
+
+.correctanswer {
+    color: green;
+    visibility: hidden;
+    padding: 10px;
+}
+.quizimage {
+    width: 130px;
+    margin: 10px;
+    display: inline;
+}
+
+.quizimagebox {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.requiredquestion {
+    display: inline;
+    color: red;
+    margin-left: 10px;
+}
+
+.shoutoutbox {
+    font-size: 0.7em;
+    margin: 5px 15px;
+    padding: 1px;
+    color: orange;
+}

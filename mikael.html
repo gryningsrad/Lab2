@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="mikael.css">
+    <script src="mikael.js"></script>
+    <title>Shipping Quiz</title>
+</head>
+<body>
+<div class="contentbox">
+    <h1>Shipping Quiz</h1>
+    <form id="quizform">
+    <div class="quizbox">
+        <h2>Sign up!</h2>
+        <p>Please enter your name, lastname and e-mail to particpate in the quiz!</p>
+        <input type="text" name="firstname" id="firstname" placeholder="First name">
+        <p class="errormessage" id="errfirstname"></p>
+        <input type="text" name="lastname" id="lastname" placeholder="Last name">
+        <p class="errormessage" id="errlastname"></p>
+        <input type="text" name="email" id="email" placeholder="E-mail">
+        <p class="errormessage" id="erremail"></p>
+    </div>
+
+    <div class="quiz">
+        <div class="quizbox">
+            <h2>Question 1</h2><div class="requiredquestion">*</div>
+            <p class="quiztext">Which of the following words are "proper" words to use onboard a ship?</p>
+            <p class="errormessage" id="errq1"></p>
+            <input type="checkbox" name="quizanswer1" id="quizanswer1a">Wall
+            <input type="checkbox" name="quizanswer1" id="quizanswer1b">Starboard
+            <input type="checkbox" name="quizanswer1" id="quizanswer1c">Floor (as in "go to the 3rd floor")
+            <input type="checkbox" name="quizanswer1" id="quizanswer1d">Kitchen
+            <div class="correctanswer" id="correct1">Correct! Starboard is the right side of the ship when looking forward, and is the only of the four words that are a "proper" shipping-word. Wall is called "bulkhead", Kitchen is called "galley" and Floor is called "deck"</div>
+            <div class="shoutoutbox">Note! This question is required</div>
+        </div>
+
+        <div class="quizbox">
+            <h2>Question 2</h2><div class="requiredquestion">*</div>
+            <p class="quiztext">which pictures shows a "Base Twist Lock"?</p>
+            <p class="errormessage" id="errq2"></p>
+            <div class="quizimagebox">
+                <img class="quizimage" src="q2pic1.jpg" onclick="q2SetRadioButton('quizanswer2a')" />
+                <img class="quizimage" src="q2pic2.jpg" onclick="q2SetRadioButton('quizanswer2b')" />
+                <img class="quizimage" src="q2pic3.jpg" onclick="q2SetRadioButton('quizanswer2c')" />
+                <img class="quizimage" src="q2pic4.jpg" onclick="q2SetRadioButton('quizanswer2d')" />
+            </div>
+            <div class="quizimagebox">
+                <input type="radio" name="quizanswer2" id="quizanswer2a" value="one">
+                <input type="radio" name="quizanswer2" id="quizanswer2b" value="two">
+                <input type="radio" name="quizanswer2" id="quizanswer2c" value="three">
+                <input type="radio" name="quizanswer2" id="quizanswer2d" value="four">
+            </div>
+            <div class="correctanswer" id="correct2">Correct! This device is used for securing containers on deck.</div>
+            <div class="shoutoutbox">Note! This question is required</div>
+        </div>
+
+        <div class="quizbox">
+            <h2>Question 3</h2>
+            <p class="quiztext">Which is the unit for measuring the length of how much anchor chain you drop when anchoring?</p>
+            <p class="errormessage" id="errq3"></p>
+            <input type="radio" name="quizanswer3" id="quizanswer3a" value="one">Meter
+            <input type="radio" name="quizanswer3" id="quizanswer3b" value="two">Yards
+            <input type="radio" name="quizanswer3" id="quizanswer3c" value="three">Fathoms
+            <input type="radio" name="quizanswer3" id="quizanswer3d" value="four">Nautcial miles
+            <div class="correctanswer" id="correct3">Correct! The unit "fathom" is equivalent with 6 feet, approx. 1.8 meters</div>
+        </div>
+
+        <div class="quizbox">
+            <h2>Question 4</h2>
+            <p class="quiztext">What do you see on the picture?</p>
+            <p class="errormessage" id="errq4"></p>
+            <div><img class="quizimage" src="q4.webp"></div>
+            <select id="quizanswer4" name="quizanswer4">
+                <option id="quizanswer4noll" name="quizanswer4noll" value="noll">-- Please select ---</option>
+                <option id="quizanswer4a" name="quizanswer4a" value="one">Capstan</option>
+                <option id="quizanswer4b" name="quizanswer4b" value="two">Mooring pollard</option>
+                <option id="quizanswer4c" name="quizanswer4c" value="three">Whinch</option>
+                <option id="quizanswer4d" name="quizanswer4d" value="four">Schackle</option>
+            </select>
+            <div class="correctanswer" id="correct4">Correct! The mooring pollard is a well known sight for many sailors.</div>
+        </div>
+
+        <div class="quizbox">
+            <h2>Question 5</h2>
+            <p class="quiztext">Spelling bee! There is one way to measure wind speed. But in which unit and how it is spelled? Clue: French sounding, "B******t" </p>
+            <p class="errormessage" id="errq5"></p>
+            <input type="text" name="quizanswer5" id="quizanswer5">
+            <div class="correctanswer" id="correct5">Correct! From the british admiral Francis Beaufort.</div>
+        </div>
+
+        <div class="quizbox">
+            <input type="button" name="sendinanswers" value="Submit my answers >>" onClick="javascript:correctAnswers()">
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>
