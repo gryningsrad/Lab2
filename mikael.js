@@ -1,6 +1,9 @@
-var errTrue = false
+var errTrue = false // Flag for registrering wrong answers
+var errValidationTrue = false // Flag for registring an form validation errors
+var errRequiredTrue = false // Flag if required answers are missing
 var correctCount = []
 var answerCount = 0
+var errorText = ""
 
 function correctAnswers() {
     
@@ -15,6 +18,9 @@ function correctAnswers() {
     correctCount.length = 0
     answerCount = 0
     errTrue = false
+    errValidationTrue = false
+    errRequiredTrue = false
+    errorText = ""
     hideAllAnswers()
 
     console.log(correctCount)
@@ -23,22 +29,22 @@ function correctAnswers() {
 
     // Validation checks
     if (firstname === "") {
-        setError("errfirstname", "Please enter your firstname.")
+        setValidationError("errfirstname", "Please enter your firstname.")
     } else {
-        setError("errfirstname", "")
+        setValidationError("errfirstname", "")
     }
 
     if (lastname === "") {
-        setError("errlastname", "Please enter your lastname.")
+        setValidationError("errlastname", "Please enter your lastname.")
     
     } else {
-        setError("errlastname", "")
+        setValidationError("errlastname", "")
     }
     
     if (!emailPattern.test(email)) {
-        setError("erremail", "Please enter a valid email address.")
+        setValidationError("erremail", "Please enter a valid email address.")
     } else {
-        setError("erremail", "")
+        setValidationError("erremail", "")
     }
 
     /********************* Check Q1 *********************/
@@ -58,8 +64,11 @@ function correctAnswers() {
     // Compare user's selections with the correct answers
 
     if (!q1a1 && !q1a2 && !q1a3 && !q1a4) { // User hasn't choosen any option
-        setError("errq1", "You must choose one answer. Question is required")
+        setRequiredError("errrequiredq1", "You must choose one answer. Question is required")
+        setError("errq1", "")
     } else {
+        setRequiredError("errrequiredq1", "")
+
         answerCount += 1
 
         if (q1a1 === correctAnswers.option1 &&
@@ -77,8 +86,10 @@ function correctAnswers() {
     
     // Check if any radio button is selected
     if (!q2SelectedOption) {
-        setError("errq2", "You must choose one answer. Question is required")
+        setRequiredError("errrequiredq2", "You must choose one answer. Question is required")
+        setError("errq2", "")
     } else {
+        setRequiredError("errrequiredq2", "")
         answerCount += 1
         // Correct answer
         const q2CorrectAnswer = "one";
@@ -98,7 +109,6 @@ function correctAnswers() {
     // Check if any radio button is selected
     if (!q3SelectedOption) {
         // Allowed not to answer this question
-        // setError("errq3", "Please select an answer")
     } else {
         answerCount += 1
         // Correct answer
@@ -158,17 +168,28 @@ function correctAnswers() {
     }
     /*********** Finish **************/
 
-    if (!errTrue) {
+
+    /* Build the error text */
+    if(errValidationTrue) {
+        errorText = "- There are some errors in your form input.\n";
+    }
+
+    if(errRequiredTrue) {
+        errorText = errorText + "- There is one or more required answers missing.\n";
+    }
+
+    if(errTrue) {
+        errorText = errorText + "- There are some answers not answered correctly.\n";
+    }
+
+    /* Check for errors, print answers or error message */
+    if (!errTrue && !errValidationTrue && !errRequiredTrue) {
         alert("You answered " + answerCount + " questions and got all of them correct!");
         showCorrectAnswers()
-        // Optionally, you can submit the form programmatically here
-        // document.getElementById('myForm').submit();
-    } else { // there are errors
-        //alert("You have " + correctCount.length + " answers of " + answerCount + " correct!")
-        alert("There are some errors in your form. Please go back up and check.")
-        //showCorrectAnswers()
-    }    
 
+    } else { // there are errors, alert user with errorText
+        alert(errorText + "\n Please check your inputs")
+    }    
 
 }
 
@@ -197,6 +218,22 @@ function setError (elementID, errorMsg) {
 
     if (errorMsg.length !== 0) {
         errTrue = true
+    }
+}
+
+function setValidationError (elementID, errorMsg) {
+    document.getElementById(elementID).textContent = errorMsg
+
+    if (errorMsg.length !== 0) {
+        errValidationTrue = true
+    }
+}
+
+function setRequiredError (elementID, errorMsg) {
+    document.getElementById(elementID).textContent = errorMsg
+
+    if (errorMsg.length !== 0) {
+        errRequiredTrue = true
     }
 }
 
